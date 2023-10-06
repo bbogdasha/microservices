@@ -1,4 +1,4 @@
-package com.bogdan.customer;
+package com.bogdan.fraud;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,27 +6,29 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer {
+public class FraudCheckHistory {
 
     @Id
     @SequenceGenerator(
-            name = "customer_id_sequence",
-            sequenceName = "customer_id_sequence"
+            name = "fraud_id_sequence",
+            sequenceName = "fraud_id_sequence"
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "customer_id_sequence"
+            generator = "fraud_id_sequence"
     )
     private Integer id;
 
-    private String firstName;
+    private Integer customerId;
 
-    private String lastName;
+    private Boolean isFraudster;
 
-    private String email;
+    private LocalDateTime createdAt;
 }
